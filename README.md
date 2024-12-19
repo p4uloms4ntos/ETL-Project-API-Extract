@@ -71,7 +71,5 @@ python src/pipeline_BTC_value.py
 ## Autor
 Paulo Moreira dos Santos
 
-## Licença
-Este projeto está sob a licença MIT.
-```
+
 
