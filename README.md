@@ -1,7 +1,7 @@
 # Projeto ETL com Python
 
 ## Descrição
-Projeto de ETL (Extract, Transform, Load) desenvolvido em Python para extrair dados da API [nome_da_api], realizar transformações necessárias e carregar em um banco de dados.
+Projeto de ETL (Extract, Transform, Load) desenvolvido em Python para extrair dados da API *Coinbase*, realizar transformações necessárias e carregar em um banco de dados PostgreSQL para alimentar um dashboard.
 
 ## Tecnologias Utilizadas
 - Python 3.8+
@@ -40,32 +40,33 @@ pip install -r requirements.txt
 ```
 projeto/
 ├── src/
-│   ├── extract.py    # Código para extração dos dados
-│   ├── transform.py  # Código para transformação dos dados
-│   └── load.py       # Código para carregamento dos dados
-├── config/
-│   └── config.py     # Configurações do projeto
+│   ├── pipeline_BTC_value.py  # Pipeline principal de ETL
+│   └── database.py            # Modelos e configuração do banco de dados
+├── .env                       # Variáveis de ambiente (não versionado)
 ├── requirements.txt
 └── README.md
 ```
 
 ## Como Usar
-1. Configure suas credenciais no arquivo `config/config.py`
-2. Execute o script principal:
+1. Certifique-se que o PostgreSQL está em execução
+2. Execute o pipeline principal:
 ```bash
-python src/main.py
+python src/pipeline_BTC_value.py
 ```
 
 ## Funcionalidades
-- Extração de dados via API REST
-- Transformação dos dados conforme regras de negócio
-- Carregamento dos dados em banco de dados
+- Extração de dados da API Coinbase a cada 15 segundos
+- Transformação dos dados (conversão de tipos e formatação)
+- Armazenamento em banco PostgreSQL
+- Monitoramento contínuo com tratamento de erros
+- Registro de timestamp para cada cotação
 
 ## Próximos Passos
-- Implementar logs
-- Adicionar testes automatizados
-- Criar documentação detalhada
-- Adicionar tratamento de erros
+- Implementar logs estruturados
+- Adicionar testes unitários
+- Criar dashboard de visualização
+- Implementar alertas de preço
+- Adicionar suporte a múltiplas criptomoedas
 
 ## Autor
 Paulo Moreira dos Santos
@@ -74,18 +75,3 @@ Paulo Moreira dos Santos
 Este projeto está sob a licença MIT.
 ```
 
-Este é um README inicial e conciso que:
-1. Explica o propósito básico do projeto
-2. Lista as principais tecnologias
-3. Fornece instruções de instalação
-4. Mostra a estrutura básica do projeto
-5. Inclui instruções de uso
-6. Lista funcionalidades principais
-7. Indica próximos passos para desenvolvimento
-
-Você pode expandir este README conforme o projeto crescer, adicionando:
-- Exemplos de uso
-- Documentação mais detalhada
-- Guias de contribuição
-- Informações sobre testes
-- Detalhes específicos da API utilizada
